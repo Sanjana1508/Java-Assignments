@@ -44,8 +44,10 @@ public class SList<E> {
 			throw new NullPointerException();
 		ListNode<E> node = new ListNode(element);
 		ListNode<E> headTemp = head;
-		for(int i = 0;i < index; i++)
-			headTemp = headTemp.next;
+		Iterator<E> itr = this.iterator();
+		int count =0;
+		while(itr.hasNext() && count<index)
+			node=node.next;
 		ListNode<E> nodenext = headTemp.next;
 		headTemp.next = node;
 		node.next = nodenext;
@@ -56,8 +58,10 @@ public class SList<E> {
 		if(index < 0 || index >= size)
 			throw new IndexOutOfBoundsException();
 		ListNode<E> headTemp = head;
-		for(int i = 0;i < index;i++)
-			headTemp = headTemp.next;
+		Iterator<E> itr = this.iterator();
+		int count =0;
+		while(itr.hasNext() && count<index)
+			headTemp=headTemp.next;
 		E oldData = headTemp.next.data;
 		headTemp.next = headTemp.next.next;
 		size--;
